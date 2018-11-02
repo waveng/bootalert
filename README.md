@@ -1,7 +1,8 @@
-# bootalert
+# bootalert 
 **bootalert** is a Javascript library for non-blocking notifications. jQuery is required. The goal is to create a simple core library that can be customized and extended.
+based on [toastr](https://github.com/CodeSeven/toastr) Modify
 
-[![Build Status](https://github.com/waveng/bootalert)
+[Build Status](https://github.com/waveng/bootalert)
 Browser testing provided by BrowserStack.
 
 ## Install
