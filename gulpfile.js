@@ -40,6 +40,7 @@ gulp.task('js', function () {
 
     return gulp
         .src(paths.js)
+        .pipe(gulp.dest(paths.build))
         .pipe(plug.sourcemaps.init())
         .pipe(plug.bytediff.start())
         .pipe(plug.uglify({}))

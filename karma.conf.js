@@ -16,7 +16,7 @@ module.exports = function (config) {
         files: [
             'node_modules/jquery/dist/jquery.min.js',
             'build/bootalert.css',
-            'bootalert.js',
+            'build/bootalert.js',
             'node_modules/qunitjs/qunit/qunit.js',
             'tests/unit/qunit-helper.js',
             'tests/unit/bootalert-tests.js'

@@ -408,7 +408,7 @@
 
                 function setProgressBar() {
                     if (options.progressBar) {
-                        $progressElement.addClass(options.progressClass + ' ' + progressColorClass);
+                        $progressElement.addClass(options.progressClass +' ' + progressColorClass);
                         $alertElement.prepend($progressElement);
                     }
                 }

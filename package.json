@@ -1,33 +1,10 @@
 {
-  "_from": "bootalert@2.1.4",
-  "_id": "bootalert@2.1.4",
-  "_inBundle": false,
-  "_integrity": "sha1-i0O+ZPudDEFIcURvLbjoyk6V8YE=",
-  "_location": "/bootalert",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "bootalert@2.1.4",
-    "name": "bootalert",
-    "escapedName": "bootalert",
-    "rawSpec": "2.1.4",
-    "saveSpec": null,
-    "fetchSpec": "2.1.4"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/bootalert/-/bootalert-2.1.4.tgz",
-  "_shasum": "8b43be64fb9d0c414871446f2db8e8ca4e95f181",
-  "_spec": "bootalert@2.1.4",
-  "_where": "E:\\sumpay\\project\\sumpay-dfs\\dfs-manage",
-  "bugs": {
-    "url": "http://stackoverflow.com/questions/tagged/bootalert"
-  },
-  "bundleDependencies": false,
+  "name": "bootalert",
+  "version": "0.0.1",
+  "author": "wangle_r@163.com",
   "dependencies": {
-    "jquery": ">=1.12.0"
+    "jquery": ">=1.12.0",
+    "bootstrap": "^3.0.0"
   },
   "deprecated": false,
   "description": "bootalertJS is a JavaScript library for Gnome / Growl type non-blocking notifications. jQuery is required. The goal is to create a simple core library that can be customized and extended.",
@@ -45,14 +22,17 @@
     "gulp-task-listing": "^0.3.0",
     "gulp-uglify": "^1.0.1",
     "gulp-util": "^3.0.1",
+    "jasmine-core": "^3.3.0",
     "jquery": "^2.1.1",
     "jshint-stylish": "^1.0.0",
     "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^0.2.6",
+    "karma-jasmine": "^2.0.1",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-qunit": "^0.1.3",
     "merge-stream": "^0.1.6",
-    "phantomjs": "^1.9.7-15",
+    "phantomjs": "^2.1.7",
     "plato": "^1.2.2",
     "qunitjs": "~1.14.0"
   },
@@ -69,17 +49,7 @@
     }
   ],
   "main": "bootalert.js",
-  "maintainers": [
-    {
-      "name": "John Papa",
-      "url": "http://www.johnpapa.net"
-    },
-    {
-      "name": "Tim Ferrell",
-      "url": "https://twitter.com/ferrell_tim"
-    }
-  ],
-  "name": "bootalert",
+
   "repository": {
     "type": "git",
     "url": "git://github.com/waveng/bootalert.git"
@@ -87,6 +57,6 @@
   "scripts": {
     "test": "gulp test"
   },
-  "style": "build/bootalert.min.css",
-  "version": "2.1.4"
+  "style": "build/bootalert.min.css"
+ 
 }

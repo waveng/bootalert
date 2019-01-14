@@ -1,28 +1,37 @@
-/// <reference path="../../../bootalert.js" />
+/// <reference path="../../bootalert.js" />
 /// <reference path="../qunit/qunit.js" />
 (function () {
-    var iconClasses = {
-        error: 'bootalert-error',
-        info: 'bootalert-info',
-        success: 'bootalert-success',
-        warning: 'bootalert-warning'
+    var alertClasses = { 
+        error: 'alert-danger',
+        info: 'alert-info',
+        success: 'alert-success',
+        warning: 'alert-warning'
     };
+    
+    var iconClasses = {
+        error: 'glyphicon-remove-sign',
+        info: 'glyphicon-info-sign',
+        success: 'glyphicon-ok-sign',
+        warning: 'glyphicon-warning-sign'
+    };
+
     var positionClasses = {
         topRight: 'bootalert-top-right',
         bottomRight: 'bootalert-bottom-right',
         bottomLeft: 'bootalert-bottom-left',
         topLeft: 'bootalert-top-left',
         topCenter: 'bootalert-top-center',
-        bottomCenter: 'bootalert-bottom-center'
+        bottomCenter: 'bootalert-bottom-center',
+        center: 'bootalert-center'
     };
     var sampleMsg = 'I don\'t think they really exist';
     var sampleTitle = 'TEST';
     var selectors = {
         container: 'div#bootalert-container',
-        bootalertInfo: 'div#bootalert-container > div.bootalert-info',
-        bootalertWarning: 'div#bootalert-container > div.bootalert-success',
-        bootalertError: 'div#bootalert-container > div.bootalert-error',
-        bootalertSuccess: 'div#bootalert-container > div.bootalert-success'
+        bootalertInfo: 'div#bootalert-container > div.alert-info',
+        bootalertWarning: 'div#bootalert-container > div.alert-success',
+        bootalertError: 'div#bootalert-container > div.alert-danger',
+        bootalertSuccess: 'div#bootalert-container > div.alert-success'
     };
 
     bootalert.options = {
@@ -32,6 +41,7 @@
         fadeIn: 0,
         showDuration: 0,
         hideDuration: 0,
+        positionClass: positionClasses.center,
         debug: false
     };
 
@@ -178,147 +188,160 @@
         resetContainer();
     });
     module('info');
-    test('info - pass title and message', 3, function () {
+    test('info - pass title and message', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.info(sampleMsg, sampleTitle);
         //Assert
         equal($bootalert.find('div.bootalert-title').html(), sampleTitle, 'Sets title');
         equal($bootalert.find('div.bootalert-message').html(), sampleMsg, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.info), 'Sets info icon');
+        ok($bootalert.hasClass(alertClasses.info), 'Sets info');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.info), 'Sets info icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
-    test('info - pass message, but no title', 3, function () {
+    test('info - pass message, but no title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.info(sampleMsg);
         //Assert
         equal($bootalert.find('div.bootalert-title').length, 0, 'Sets null title');
         equal($bootalert.find('div.bootalert-message').html(), sampleMsg, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.info), 'Sets info icon');
+        ok($bootalert.hasClass(alertClasses.info), 'Sets info');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.info), 'Sets info icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
-    test('info - pass no message nor title', 3, function () {
+    test('info - pass no message nor title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.info(); //Assert
         equal($bootalert.find('div.bootalert-title').length, 0, 'Sets null title');
         equal($bootalert.find('div.bootalert-message').html(), null, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.info), 'Sets info icon');
+        ok($bootalert.hasClass(alertClasses.info), 'Sets info');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.info), 'Sets info icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
     module('warning');
-    test('warning - pass message and title', 3, function () {
+    test('warning - pass message and title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.warning(sampleMsg, sampleTitle);
         //Assert
         equal($bootalert.find('div.bootalert-title').html(), sampleTitle, 'Sets title');
         equal($bootalert.find('div.bootalert-message').html(), sampleMsg, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.warning), 'Sets warning icon');
+        ok($bootalert.hasClass(alertClasses.warning), 'Sets warning');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.warning), 'Sets warning icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
-    test('warning - pass message, but no title', 3, function () {
+    test('warning - pass message, but no title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.warning(sampleMsg);
         //Assert
         equal($bootalert.find('div.bootalert-title').length, 0, 'Sets empty title');
         equal($bootalert.find('div.bootalert-message').html(), sampleMsg, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.warning), 'Sets warning icon');
+        ok($bootalert.hasClass(alertClasses.warning), 'Sets warning');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.warning), 'Sets warning icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
-    test('warning - no message nor title', 3, function () {
+    test('warning - no message nor title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.warning('');
         //Assert
         equal($bootalert.find('div.bootalert-title').length, 0, 'Sets null title');
         equal($bootalert.find('div.bootalert-message').length, 0, 'Sets empty message');
-        ok($bootalert.hasClass(iconClasses.warning), 'Sets warning icon');
+        ok($bootalert.hasClass(alertClasses.warning), 'Sets warning');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.warning), 'Sets warning icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
     module('error');
-    test('error - pass message and title', 3, function () {
+    test('error - pass message and title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.error(sampleMsg, sampleTitle);
         //Assert
         equal($bootalert.find('div.bootalert-title').html(), sampleTitle, 'Sets title');
         equal($bootalert.find('div.bootalert-message').html(), sampleMsg, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.error), 'Sets error icon');
+        ok($bootalert.hasClass(alertClasses.error), 'Sets error');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.error), 'Sets error icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
-    test('error - pass message, but no title', 3, function () {
+    test('error - pass message, but no title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.error(sampleMsg); //Assert
         equal($bootalert.find('div.bootalert-title').length, 0, 'Sets empty title');
         equal($bootalert.find('div.bootalert-message').html(), sampleMsg, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.error), 'Sets error icon');
+        ok($bootalert.hasClass(alertClasses.error), 'Sets error');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.error), 'Sets error icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
-    test('error - no message nor title', 3, function () {
+    test('error - no message nor title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.error('');
         //Assert
         equal($bootalert.find('div.bootalert-title').length, 0, 'Sets empty title');
         equal($bootalert.find('div.bootalert-message').length, 0, 'Sets empty message');
-        ok($bootalert.hasClass(iconClasses.error), 'Sets error icon');
+        ok($bootalert.hasClass(alertClasses.error), 'Sets error');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.error), 'Sets error icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
     module('success');
-    test('success - pass message and title', 3, function () {
+    test('success - pass message and title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.success(sampleMsg, sampleTitle);
         //Assert
         equal($bootalert.find('div.bootalert-title').html(), sampleTitle, 'Sets title');
         equal($bootalert.find('div.bootalert-message').html(), sampleMsg, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.success), 'Sets success icon');
+        ok($bootalert.hasClass(alertClasses.success), 'Sets success');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.success), 'Sets success icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
-    test('success - pass message, but no title', 3, function () {
+    test('success - pass message, but no title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.success(sampleMsg);
         //Assert
         equal($bootalert.find('div.bootalert-title').length, 0, 'Sets empty title');
         equal($bootalert.find('div.bootalert-message').html(), sampleMsg, 'Sets message');
-        ok($bootalert.hasClass(iconClasses.success), 'Sets success icon');
+        ok($bootalert.hasClass(alertClasses.success), 'Sets success');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.success), 'Sets success icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
-    test('success - no message nor title', 3, function () {
+    test('success - no message nor title', 4, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.success('');
         //Assert
         equal($bootalert.find('div.bootalert-title').length, 0, 'Sets null title');
         equal($bootalert.find('div.bootalert-message').length, 0, 'Sets empty message');
-        ok($bootalert.hasClass(iconClasses.success), 'Sets success icon'); //Teardown
+        ok($bootalert.hasClass(alertClasses.success), 'Sets success'); 
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.success), 'Sets success icon'); 
+        //Teardown
         $bootalert.remove();
         clearContainerChildren();
     });
@@ -632,12 +655,13 @@
         }, delay);
     });
 
-    test('event - message appears when no show or hide method functions provided', 1, function () {
+    test('event - message appears when no show or hide method functions provided', 2, function () {
         //Arrange
         //Act
         var $bootalert = bootalert.success(sampleMsg, sampleTitle);
         //Assert
-        ok($bootalert.hasClass(iconClasses.success), 'Sets success icon');
+        ok($bootalert.hasClass(alertClasses.success), 'Sets success');
+        ok($bootalert.find('.bootalert-icon').children().hasClass(iconClasses.success), 'Sets success icon');
         //Teardown
         $bootalert.remove();
         clearContainerChildren();
@@ -840,6 +864,20 @@
         var $container = bootalert.getContainer();
         //Assert
         ok($container.hasClass(positionClasses.bottomCenter), 'Has position bottom center');
+        //Teardown
+        $bootalert.remove();
+        resetContainer();
+    });
+
+    test('Container - position center', 1, function () {
+        //Arrange
+        resetContainer();
+        bootalert.options.positionClass = positionClasses.center;
+        //Act
+        var $bootalert = bootalert.success(sampleMsg);
+        var $container = bootalert.getContainer();
+        //Assert
+        ok($container.hasClass(positionClasses.center), 'Has position bottom center');
         //Teardown
         $bootalert.remove();
         resetContainer();
