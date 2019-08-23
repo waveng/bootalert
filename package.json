@@ -1,6 +1,6 @@
 {
   "name": "bootalert",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "wangle_r@163.com",
   "dependencies": {
     "jquery": ">=1.12.0",

@@ -83,7 +83,11 @@ button.bootalert-close-button {
 .bootalert-icon {
   position: absolute;
   margin-left: -35px;
-  font-size: 32px;
+  width: 28px;
+  height: 28px;
+}
+.bootalert-icon i {
+  font-size: 28px;
 }
 #bootalert-container {
   position: fixed;
